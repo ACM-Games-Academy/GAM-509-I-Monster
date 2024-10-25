@@ -49,13 +49,13 @@ public class Missile : MonoBehaviour
     public void Explode()
     {
         GameObject newExplosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        PlayerModel pm = FindObjectsOfType<PlayerModel>()[0];
+        /*PlayerModel pm = FindObjectsOfType<PlayerModel>()[0];
 
         if (pm ? Vector3.Distance(transform.position, pm.transform.position) < 2.5f : false)
         {
             pm.ReduceHealth(10);
         }
-
+        */
         Destroy(gameObject);
     }
 }
