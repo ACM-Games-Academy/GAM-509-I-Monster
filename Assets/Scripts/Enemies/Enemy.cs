@@ -6,15 +6,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    EnemyData data;
-
     protected float health;
     protected float damage;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        health = data.health;
-        damage = data.damage;
+        
     }
 
     protected virtual void Start()
@@ -30,5 +27,20 @@ public class Enemy : MonoBehaviour
     protected virtual void FixedUpdate()
     {
 
+    }
+
+    protected virtual void OnDisable()
+    {
+
+    }
+
+    private void giveDamage(float damage)
+    {
+        health -= damage;
+
+        if (health < 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
