@@ -6,12 +6,13 @@ public class playerController : MonoBehaviour
 {
     private playerModel playerModel;
 
-    //void OnCollisionEnter(Collision other)
-    //{
-      //  Missile missile = other.gameObject.GetComponent<Missile>();
-      //  if (missile != null)
-      //  {
-            //player.Model.TakeDamage(missile.GetDamage());
-      //  }
-    //}
+    private void Start()
+    {
+        playerModel = GetComponent<playerModel>();
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        playerModel.TakeDamage(40);
+    }
 }
