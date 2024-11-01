@@ -11,8 +11,12 @@ public class playerController : MonoBehaviour
         playerModel = GetComponent<playerModel>();
     }
 
-    void OnCollisionEnter(Collision other)
+    void TakeDamage(float damage)
     {
-        playerModel.TakeDamage(101);
+        playerModel.ReduceHealth(damage);
+        if (playerModel.GetHealth() <= 0)
+        {
+            Debug.Log("Game Over");
+        }
     }
 }
