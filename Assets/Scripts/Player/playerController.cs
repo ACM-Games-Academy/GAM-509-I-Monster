@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
         playerModel = GetComponent<playerModel>();
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         playerModel.ReduceHealth(damage);
         if (playerModel.GetHealth() <= 0)
