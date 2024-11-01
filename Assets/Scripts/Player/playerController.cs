@@ -13,6 +13,6 @@ public class playerController : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        playerModel.TakeDamage(40);
+        playerModel.TakeDamage(101);
     }
 }
