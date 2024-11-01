@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
 
     private void Start()
     {
-        playerModel = GetComponent<playerModel>();
+        playerModel = new playerModel();
     }
 
     public void TakeDamage(float damage)

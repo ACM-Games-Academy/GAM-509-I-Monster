@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerModel : MonoBehaviour
+public class playerModel
 {
     float Health = 100;
 
