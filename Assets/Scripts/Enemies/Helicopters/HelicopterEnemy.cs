@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,6 +12,7 @@ public class HelicopterEnemy : Enemy
     [SerializeField] private HelicopterData data;
     [SerializeField] private GameObject gun;
     [SerializeField] private ParticleSystem hitEffect;
+    [SerializeField] private Rigidbody rb;
 
     private NavMeshAgent agent;
     private CapsuleCollider firingArea;
@@ -48,6 +50,7 @@ public class HelicopterEnemy : Enemy
         firingArea.radius = data.firingRange;
         firingArea.height = 2 * data.heightOffset + 2 * data.firingRange;  //this increases the height and then increases it again by the radius. This is so the curved part is below the floor making it more similar to a cylinder.
         
+        rb = transform.GetComponent<Rigidbody>();
 
         particleSys = gun.GetComponent<ParticleSystem>();
 
@@ -58,6 +61,19 @@ public class HelicopterEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (rb.velocity.magnitude > agent.speed)  //something has applied a force to it and this has made it exceed its max speed
+        {
+            Debug.Log("Agent Disabled");
+            agent.enabled = false;
+            rb.useGravity = true;
+        }
+
+        else
+        {
+            rb.useGravity = false;
+            agent.enabled = true;
+        }  
     }
 
     //this will run for the entire time the object is alive it just makes the helicopter follow the player
@@ -67,6 +83,16 @@ public class HelicopterEnemy : Enemy
         {
             agent.SetDestination(target.transform.position);
             yield return new WaitForSeconds(posRefreshTime);
+
+            if (Vector3.Distance(target.transform.position, transform.position) < agent.stoppingDistance)
+            {
+                agent.enabled = false;
+            }
+
+            else
+            {
+                agent.enabled = true;
+            }
         }
     }
     
@@ -108,8 +134,7 @@ public class HelicopterEnemy : Enemy
 
     //These controls when the attack coroutine starts and finishes
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Something entered the trigger");
+    {   
         if (other.gameObject == target)  //if the object inside of the trigger is the player
         {
             Debug.Log("Player entered firing range");
