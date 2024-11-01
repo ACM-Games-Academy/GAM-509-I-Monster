@@ -14,7 +14,7 @@ public class playerModel : MonoBehaviour
     // Update is called once per frame
     public void TakeDamage(float Amount)
     {
-        if (Health < Amount)
+        if (Health <= Amount)
         {
             PlayerDead();
         }
