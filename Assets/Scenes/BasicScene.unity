@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18306622, g: 0.2287434, b: 0.30669293, a: 1}
+  m_IndirectSpecularColor: {r: 0.18306595, g: 0.2287429, b: 0.3066922, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,6 +511,8 @@ MonoBehaviour:
   handCollider: {fileID: 616784996}
   grabPosition: {fileID: 697242353}
   distanceToEnableCollision: 0.1
+  moveToGrabSpeed: 20
+  positionTolerance: 0.01
 --- !u!65 &616785003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -579,6 +581,8 @@ MonoBehaviour:
   handCollider: {fileID: 754062870}
   grabPosition: {fileID: 113313090}
   distanceToEnableCollision: 0.1
+  moveToGrabSpeed: 20
+  positionTolerance: 0.01
 --- !u!1 &756192406
 GameObject:
   m_ObjectHideFlags: 0
