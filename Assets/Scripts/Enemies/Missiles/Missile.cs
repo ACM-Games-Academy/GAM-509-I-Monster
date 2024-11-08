@@ -37,7 +37,7 @@ public class Missile : MonoBehaviour
         transform.position += transform.forward * speed * Time.deltaTime;
 
 
-        int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision"));
+        int layersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision"));
         RaycastHit hit;
         Physics.Raycast(transform.position + transform.TransformDirection(Vector3.back * 1f), transform.TransformDirection(Vector3.forward), out hit, 2f);
         if (hit.transform != null || Vector3.Distance(transform.position, target.position) < 0.5f)

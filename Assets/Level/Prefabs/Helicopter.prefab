@@ -4917,7 +4917,7 @@ Transform:
   m_GameObject: {fileID: 5528002204713192144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.726798, y: 6.72, z: 2.1781433}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5013,7 +5013,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 37c02e9f963e66349aeda82847c4588f, type: 2}
   gun: {fileID: 4604463973796415982}
   hitEffect: {fileID: 8064568250957913758, guid: 7dfa371446c30924babe0e31c6b4285d, type: 3}
-  rb: {fileID: 0}
+  rb: {fileID: 7357352456345252751}
 --- !u!54 &7357352456345252751
 Rigidbody:
   m_ObjectHideFlags: 0

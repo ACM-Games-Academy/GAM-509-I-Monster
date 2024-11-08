@@ -30,6 +30,12 @@ public class HelicopterEnemy : Enemy
     protected override void Start()
     {
         base.Start();
+
+        if (target == null)
+        {
+            target = Camera.main.gameObject;
+        }
+
         health = data.health;
         posRefreshTime = data.updateTargetRefresh;
 
