@@ -118,6 +118,10 @@ public class HelicopterEnemy : Enemy
     {
         List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
+        int colEvent = particleSys.GetCollisionEvents(other, colEvents);
+
+        print("hit");
+
         if (other == target)
         {
             //deal damage
