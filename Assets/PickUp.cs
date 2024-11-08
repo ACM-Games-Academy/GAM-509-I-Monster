@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 public class PickUp : MonoBehaviour
 {
     public InputActionReference gripButton;
-    public GameObject handCollider;  // Hand collider (can be left or right hand)
-    public Transform grabPosition;   // Position where the object is held (can be left or right hand)
+    public GameObject handCollider;                 // Hand collider (can be left or right hand)
+    public Transform grabPosition;                  // Position where the object is held (can be left or right hand)
     public float distanceToEnableCollision = 1.0f;  // Distance threshold to re-enable collision
-    public float moveToGrabSpeed = 5.0f;  // Speed at which the object moves to the grab position
-    public float positionTolerance = 0.01f;  // Tolerance to consider the object "reached" the grab position
+    public float moveToGrabSpeed = 5.0f;            // Speed at which the object moves to the grab position
+    public float positionTolerance = 0.01f;         // Tolerance to consider the object "reached" the grab position
 
     private GameObject heldObject = null;
     private Rigidbody heldObjectRb;
@@ -19,9 +19,9 @@ public class PickUp : MonoBehaviour
     private Vector3 handVelocity;
     private bool isObjectThrown = false;
     private bool isMovingToGrabPosition = false;  // Flag to check if object is moving to grab position
-    private bool isFollowingHand = false;  // Flag to check if object should follow the hand directly
+    private bool isFollowingHand = false;         // Flag to check if object should follow the hand directly
 
-    private static bool isObjectHeld = false;  // Tracks if any hand is holding the object
+    private bool isHoldingObject = false;         // Tracks if this hand is holding an object
 
     private void OnEnable()
     {
@@ -37,10 +37,8 @@ public class PickUp : MonoBehaviour
 
     private void OnGripPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("Grippy");
-
-        // Only allow pickup if no hand is holding the object
-        if (heldObject == null && handCollider != null && !isObjectHeld)
+        // Only allow pickup if this hand is not already holding an object
+        if (heldObject == null && handCollider != null && !isHoldingObject)
         {
             // Try to grab an object within the hand collider
             Collider[] colliders = Physics.OverlapSphere(handCollider.transform.position, 0.1f);
@@ -57,10 +55,10 @@ public class PickUp : MonoBehaviour
                         heldObjectRb.isKinematic = true;  // Disable physics while holding
                     }
 
-                    isObjectHeld = true;  // Set the object as held
+                    isHoldingObject = true;  // Mark this hand as holding an object
                     isMovingToGrabPosition = true;  // Start moving the object to the grab position
                     isFollowingHand = false;  // Reset following flag
-                    Debug.Log("Object grabbed!");
+                    Debug.Log("Object grabbed by " + gameObject.name);
                     break;
                 }
             }
@@ -74,18 +72,17 @@ public class PickUp : MonoBehaviour
             // Release the object and apply throw velocity
             if (heldObjectRb != null)
             {
-                heldObjectRb.isKinematic = false;  // Re-enable physics interactions
+                heldObjectRb.isKinematic = false;      // Re-enable physics interactions
                 heldObjectRb.velocity = handVelocity;  // Apply hand's velocity to the object
 
-                isObjectThrown = true;  // Mark the object as thrown
-                Debug.Log("Object thrown with velocity: " + handVelocity);
+                isObjectThrown = true;                 // Mark the object as thrown
+                Debug.Log("Object thrown by " + gameObject.name + " with velocity: " + handVelocity);
             }
 
-            Debug.Log("Object released!");
             heldObject = null;
-            isObjectHeld = false;  // Set the object as not held, so another hand can pick it up
-            isMovingToGrabPosition = false;  // Stop moving to grab position
-            isFollowingHand = false;  // Stop following hand
+            isHoldingObject = false;            // Mark this hand as no longer holding an object
+            isMovingToGrabPosition = false;     // Stop moving to grab position
+            isFollowingHand = false;            // Stop following hand
         }
     }
 
