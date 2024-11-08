@@ -19,4 +19,12 @@ public class playerController : MonoBehaviour
             Debug.Log("Game Over");
         }
     }
+
+    public void OnParticleCollision(GameObject other)
+    {
+        if (other.transform.name == "gun")
+        {
+            TakeDamage(10);
+        }
+    }
 }
