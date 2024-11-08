@@ -21,7 +21,7 @@ public class MissleLauncherTest : MonoBehaviour
         if (cooldown <= 0)
         {
             cooldown = 5;
-            GameObject newMissile = Instantiate(missilePrefab, transform.position, Quaternion.Euler(-90, 0, 0));
+            GameObject newMissile = Instantiate(missilePrefab, transform.position, Quaternion.Euler(0, 0, 0));
         }
     }
 }
