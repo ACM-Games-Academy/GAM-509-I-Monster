@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Anchor
   - Grabbable
+  - Enemy
   layers:
   - Default
   - TransparentFX
