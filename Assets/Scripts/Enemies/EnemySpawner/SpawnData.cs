@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu(fileName = "SpawnData", menuName = "Enemy/SpawnEvent", order = 1)]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class SpawnData : ScriptableObject
+{
+    [Header("Amount of Enemies")]
+    public int tankAmount;
+    public int helicopterAmount;
+
+    [Header("Enemy Prefab")]
+    public GameObject tankPrefab;
+    public GameObject helicopterPrefab;
+
+    [Header("Radius")]
+    public float spawnRadius;
+
+    [Header("Height")]
+    public float Height;
 }
