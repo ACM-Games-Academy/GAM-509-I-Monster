@@ -9,29 +9,13 @@ public class Enemy : MonoBehaviour
     protected float health;
     protected float damage;
 
-    protected virtual void OnEnable()
+    public void Start()
     {
         
     }
-
-    protected virtual void Start()
+    public virtual void initEnemy()
     {
-
-    }
-
-    protected virtual void Update()
-    {
-
-    }
-
-    protected virtual void FixedUpdate()
-    {
-
-    }
-
-    protected virtual void OnDisable()
-    {
-
+        //assign enemy values here i your specific enemy class
     }
 
     private void giveDamage(float damage)
