@@ -199,10 +199,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripButton: {fileID: -4771540538349297181, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   handCollider: {fileID: 202364687}
+  cameraObject: {fileID: 0}
   grabPosition: {fileID: 1666320186578454293}
   distanceToEnableCollision: 0.1
   moveToGrabSpeed: 20
   positionTolerance: 0.01
+  eatNoise: {fileID: 0}
 --- !u!65 &4877498606511762906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -423,10 +425,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gripButton: {fileID: 8652046402091141035, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   handCollider: {fileID: 1670256624}
+  cameraObject: {fileID: 0}
   grabPosition: {fileID: 3954319948395782924}
   distanceToEnableCollision: 0.1
   moveToGrabSpeed: 20
   positionTolerance: 0.01
+  eatNoise: {fileID: 0}
 --- !u!65 &57180569213189842
 BoxCollider:
   m_ObjectHideFlags: 0
