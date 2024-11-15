@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void giveDamage(float damage)
+    public void giveDamage(float damage)
     {
         health -= damage;
 
