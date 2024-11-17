@@ -69,7 +69,7 @@ public class Missile : MonoBehaviour
 
         playerController pc = FindObjectOfType<playerController>();
 
-        if (Vector3.Distance(Camera.main.transform.position, transform.position) < 2)
+        if (Vector3.Distance(Camera.main.transform.position, transform.position) < 3)
         {
             try
             {
@@ -83,7 +83,7 @@ public class Missile : MonoBehaviour
 
         foreach (Enemy enemy in FindObjectsOfType<Enemy>())
         {
-            if (Vector3.Distance(enemy.transform.position, transform.position) < 2)
+            if (Vector3.Distance(enemy.transform.position, transform.position) < 3)
             {
                 enemy.giveDamage(50);
             }
