@@ -34,7 +34,7 @@ public class Missile : MonoBehaviour
         if (!grabInteractable.isSelected)
         {
             lifetime += Time.deltaTime;
-            if (lifetime > 2)
+            if (lifetime > 0)
             {
                 aimingDummy.LookAt(target.transform.position);
                 aimingDummy.Rotate(90, 0, 0);
@@ -59,7 +59,7 @@ public class Missile : MonoBehaviour
         }
         else
         {
-            lifetime = -2;
+            lifetime = -4;
         }
     }
 
@@ -69,9 +69,24 @@ public class Missile : MonoBehaviour
 
         playerController pc = FindObjectOfType<playerController>();
 
-        if (Vector3.Distance(Camera.main.transform.position, transform.position) < 2)
+        if (Vector3.Distance(Camera.main.transform.position, transform.position) < 3)
         {
-            pc.TakeDamage(50);
+            try
+            {
+                pc.TakeDamage(50);
+            }
+            catch
+            {
+
+            }
+        }
+
+        foreach (Enemy enemy in FindObjectsOfType<Enemy>())
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < 3)
+            {
+                enemy.giveDamage(50);
+            }
         }
 
         Destroy(gameObject);

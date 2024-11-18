@@ -27,10 +27,8 @@ public class HelicopterEnemy : Enemy
     private Coroutine helicopterMovement;
     private Coroutine helicopterAttack;
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
-
         if (target == null)
         {
             target = Camera.main.gameObject;
@@ -64,10 +62,8 @@ public class HelicopterEnemy : Enemy
         helicopterMovement = StartCoroutine(HelicopterTrack());
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
-
         if (rb.velocity.magnitude > agent.speed)  //something has applied a force to it and this has made it exceed its max speed
         {
             Debug.Log("Agent Disabled");
@@ -165,7 +161,7 @@ public class HelicopterEnemy : Enemy
 
     
 
-    protected override void OnDisable()
+    private void OnDisable()
     {
         StopAllCoroutines();
     }
