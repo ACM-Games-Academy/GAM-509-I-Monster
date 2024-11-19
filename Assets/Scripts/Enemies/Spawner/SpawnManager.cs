@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+//NOTE: THIS IS AN OLD VERSION. DO NOT USE THIS SCRIPT!
 [System.Serializable]
 public struct SpawnCriteria
 {
@@ -30,7 +31,6 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < spawnData.tankAmount; i++)
         {
             GameObject enemy = Instantiate(spawnData.tankPrefab, spawnLocation.position, Quaternion.identity);
-            enemy.GetComponent<Enemy>().initEnemy();
         }
 
         for (int i = 0;i < spawnData.helicopterAmount; i++)
