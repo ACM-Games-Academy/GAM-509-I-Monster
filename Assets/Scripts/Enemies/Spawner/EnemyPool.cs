@@ -1,47 +1,41 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    public static EnemyPool instance;
+    // Pool properties
     private List<GameObject> pooledEnemies = new List<GameObject>();
-    private int amountToPool = 5;
+    private int amountToPool;
+    private GameObject enemyPrefab;
 
-    [SerializeField] private GameObject enemyPrefab;
-
-    private void Awake()
+    // Constructor to initialize the pool
+    public void Initialize(GameObject prefab, int initialPoolSize)
     {
-        if (instance == null)
+        enemyPrefab = prefab;
+        amountToPool = initialPoolSize;
+
+        for (int i = 0; i < amountToPool; i++)
         {
-            instance = this;
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        for (int i = 0; i < amountToPool; i++) 
-        { 
             GameObject enemy = Instantiate(enemyPrefab);
             enemy.SetActive(false);
             pooledEnemies.Add(enemy);
         }
-
-
     }
 
-    // Update is called once per frame
+    // Get an inactive enemy from the pool
     public GameObject GetPooledEnemy()
     {
-        for(int i = 0;i < pooledEnemies.Count; i++)
+        foreach (GameObject enemy in pooledEnemies)
         {
-            if (!pooledEnemies[i].activeInHierarchy)
+            if (!enemy.activeInHierarchy)
             {
-                return pooledEnemies[i];
+                return enemy;
             }
         }
-
-        return null;
+     
+        GameObject newEnemy = Instantiate(enemyPrefab);
+        newEnemy.SetActive(false);
+        pooledEnemies.Add(newEnemy);
+        return newEnemy;
     }
 }
