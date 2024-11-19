@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gedan Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 8319084516470738633, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -60,6 +64,11 @@ PrefabInstance:
 --- !u!4 &1490483589376750571 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3558669612026492665, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
+  m_PrefabInstance: {fileID: 2724024411946042642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6250713226145270747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8319084516470738633, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
   m_PrefabInstance: {fileID: 2724024411946042642}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6312629839938156909
@@ -114,11 +123,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gedan Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 8319084516470738633, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
+--- !u!1 &2659837573970245540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8319084516470738633, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
+  m_PrefabInstance: {fileID: 6312629839938156909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7419707103370776468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3558669612026492665, guid: b0c7bc05ecb23204ca21fee3c93ae93d, type: 3}
@@ -339,3 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859257a0af06f5c45bc7d3c5772ee427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftGrab: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightGrab: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftLaser: {fileID: 2659837573970245540}
+  rightLaser: {fileID: 6250713226145270747}
