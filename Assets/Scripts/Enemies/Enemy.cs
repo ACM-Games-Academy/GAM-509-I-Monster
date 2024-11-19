@@ -9,22 +9,13 @@ public class Enemy : MonoBehaviour
     protected float health;
     protected float damage;
 
-    public void Start()
-    {
-        
-    }
-    public virtual void initEnemy()
-    {
-        //assign enemy values here i your specific enemy class
-    }
-
-    private void giveDamage(float damage)
+    public void giveDamage(float damage)
     {
         health -= damage;
 
         if (health < 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }
