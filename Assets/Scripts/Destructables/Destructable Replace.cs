@@ -7,14 +7,18 @@ public class DestructableReplace : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //string destructibleObjectName;
-    public GameObject destroyedObjectGroup;
+    public string destructibleObjectName;
     // Update is called once per frame
     public void Destroyed(GameObject deadObject)
     {
         //destructibleObjectName = PrefabUtility.GetCorrespondingObjectFromSource(deadObject).name;
         //destroyedObjectGroup = ;
-        Instantiate(destroyedObjectGroup, deadObject.transform);
+        Instantiate(Resources.Load("Buildings/"+destructibleObjectName), deadObject.transform.position, deadObject.transform.rotation);
         deadObject.SetActive(false);
+    }
+
+    public void DestroySelf()
+    {
+        Destroyed(gameObject);
     }
 }
