@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestSpawning : MonoBehaviour
 {
     [SerializeField] EnemySpawnFactory enemyFactories;
+
     [SerializeField] Transform spawnTransform;
     private List<GameObject> createdEnemies = new List<GameObject>();
 
