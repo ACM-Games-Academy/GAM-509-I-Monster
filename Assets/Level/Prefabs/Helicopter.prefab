@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1618433150661268711}
   - component: {fileID: 2357120015279466155}
   - component: {fileID: 7736109289667545417}
-  - component: {fileID: 3100511862522501142}
   m_Layer: 0
   m_Name: gun
   m_TagString: Untagged
@@ -4887,23 +4886,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3100511862522501142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4604463973796415982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3558bfc9511f59458a2db3259781f2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  data: {fileID: 11400000, guid: 37c02e9f963e66349aeda82847c4588f, type: 2}
-  gun: {fileID: 4604463973796415982}
-  hitEffect: {fileID: 8064568250957913758, guid: 7dfa371446c30924babe0e31c6b4285d, type: 3}
-  rb: {fileID: 7357352456345252751}
 --- !u!1 &5528002204713192144
 GameObject:
   m_ObjectHideFlags: 0
