@@ -27,8 +27,9 @@ public class HelicopterEnemy : Enemy
     private Coroutine helicopterMovement;
     private Coroutine helicopterAttack;
 
-    private void Start()
+    protected override void EnemyInit()
     {
+        base.EnemyInit();
         if (target == null)
         {
             target = Camera.main.gameObject;
@@ -64,18 +65,7 @@ public class HelicopterEnemy : Enemy
 
     private void Update()
     {
-        if (rb.velocity.magnitude > agent.speed)  //something has applied a force to it and this has made it exceed its max speed
-        {
-            Debug.Log("Agent Disabled");
-            agent.enabled = false;
-            rb.useGravity = true;
-        }
 
-        else
-        {
-            rb.useGravity = false;
-            agent.enabled = true;
-        }  
     }
 
     //this will run for the entire time the object is alive it just makes the helicopter follow the player
@@ -116,7 +106,7 @@ public class HelicopterEnemy : Enemy
 
         int colEvent = particleSys.GetCollisionEvents(other, colEvents);
 
-        print("hit");
+        Debug.Log("hit");
 
         if (other == target)
         {
@@ -159,7 +149,15 @@ public class HelicopterEnemy : Enemy
         }
     }
 
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == target)
+        {
+            StopAllCoroutines();
+            rb.isKinematic = false;
+            gameObject.SetActive(false);
+        }
+    }
 
     private void OnDisable()
     {
