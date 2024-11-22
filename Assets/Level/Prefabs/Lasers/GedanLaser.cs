@@ -17,7 +17,7 @@ public class GedanLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 startPoint = transform.position + (transform.forward * 0.5f);
+        Vector3 startPoint = transform.position + (transform.forward * 0.125f);
         Vector3 endPoint = Vector3.zero;
         RaycastHit hit = new RaycastHit();
         int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision") | 1 << LayerMask.NameToLayer("Player Attack Hitbox") | 1 << LayerMask.NameToLayer("2D Section") | 1 << LayerMask.NameToLayer("Viewmodel") | 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Player 1") | 1 << LayerMask.NameToLayer("Player 2") | 1 << LayerMask.NameToLayer("Player 3") | 1 << LayerMask.NameToLayer("Player 4") | 1 << LayerMask.NameToLayer("Enemy"));
