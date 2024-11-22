@@ -9,6 +9,11 @@ public class Enemy : MonoBehaviour
     protected float health;
     protected float damage;
 
+    protected virtual void EnemyInit()
+    {
+
+    }
+
     public void giveDamage(float damage)
     {
         health -= damage;
