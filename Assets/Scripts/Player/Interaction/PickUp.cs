@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +14,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float moveToGrabSpeed = 5.0f;            // Speed at which the object moves to the grab position
     [SerializeField] private float positionTolerance = 0.01f;         // Tolerance to consider the object "reached" the grab position
     [SerializeField] private AudioSource eatNoise;
-   
+    
 
     private GameObject heldObject = null;
     private Rigidbody heldObjectRb;
@@ -23,8 +24,8 @@ public class PickUp : MonoBehaviour
     private bool isObjectThrown = false;
     private bool isMovingToGrabPosition = false;  // Flag to check if object is moving to grab position
     private bool isFollowingHand = false;         // Flag to check if object should follow the hand directly
-
     private bool isHoldingObject = false;         // Tracks if this hand is holding an object
+    private playerModel playerModel;              // Reference to player model to gain health
 
     private void OnEnable()
     {
@@ -153,17 +154,18 @@ public class PickUp : MonoBehaviour
         Debug.Log("Enemy Eaten");
 
         // Play the eating sound if it's not already playing
-        if (!eatNoise.isPlaying)
-        {
-            eatNoise.Play();
-        }
+        if (!eatNoise.isPlaying) { eatNoise.Play(); }
 
         // Destroy the enemy object
         if (heldObject != null)
         {
-            Destroy(heldObject);
+            heldObject.SetActive(false);
             heldObject = null;  // Clear the reference 
             isHoldingObject = false;  // Make hand marked as free
+
+            playerModel.IncreaseHealth(10f);
+
+           
         }
     }
 
