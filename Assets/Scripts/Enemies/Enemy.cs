@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     protected float health;
     protected float damage;
 
-    protected virtual void EnemyInit()
+    public virtual void EnemyInit()
     {
 
     }

@@ -27,7 +27,7 @@ public class HelicopterEnemy : Enemy
     private Coroutine helicopterMovement;
     private Coroutine helicopterAttack;
 
-    protected override void EnemyInit()
+    public override void EnemyInit()
     {
         base.EnemyInit();
         if (target == null)
@@ -100,7 +100,7 @@ public class HelicopterEnemy : Enemy
         }
     }
 
-    private void OnParticleCollision(GameObject other)
+    public void particleCollision(GameObject other)
     {
         List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
@@ -153,10 +153,13 @@ public class HelicopterEnemy : Enemy
     {
         if (collision.gameObject == target)
         {
+            //When it hits the player it will stop using the navmesh
             StopAllCoroutines();
             rb.isKinematic = false;
             gameObject.SetActive(false);
         }
+
+        if (collision.)
     }
 
     private void OnDisable()
