@@ -159,7 +159,7 @@ public class HelicopterEnemy : Enemy
             gameObject.SetActive(false);
         }
 
-        if (collision.)
+        
     }
 
     private void OnDisable()

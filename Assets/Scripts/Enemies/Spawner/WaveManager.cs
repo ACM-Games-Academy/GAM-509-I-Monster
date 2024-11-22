@@ -87,13 +87,19 @@ public class WaveManager : MonoBehaviour
             spawnPosition.y += helicopterHeightOffset; // Add height offset for helicopters
         }
 
+        // Spawn enemy
         ISpawner spawner = factory.GetSpawner(spawnPosition);
         if (spawner is Component component)
         {
             GameObject enemy = component.gameObject;
             enemy.SetActive(true);
 
-          
+            // Initialize helicopter
+            if (isHelicopter && enemy.TryGetComponent<HelicopterEnemy>(out HelicopterEnemy helicopterEnemy))
+            {
+                helicopterEnemy.EnemyInit();
+            }
+
             createdEnemies.Add(enemy);
         }
     }
