@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   speed: 5
-  updateTargetRefresh: 1
-  stoppingDistance: 3
-  heightOffset: 4
+  stoppingDistance: 8
+  patrolRadius: 8
+  heightOffset: 8
   damage: 10
-  firingRange: 4
-  fireRate: 0.5
+  firingRange: 9
+  fireRate: 2
   explosionPower: 12
   explosionRadius: 12
