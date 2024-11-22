@@ -13,7 +13,7 @@ public class WaveManager : MonoBehaviour
     }
 
     // Array of waves
-    [SerializeField] private Wave[] waves; 
+    [SerializeField] private Wave[] waves;
 
     // Spawn delay
     [SerializeField] private float spawnDelay = 0;
@@ -25,11 +25,13 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private EnemySpawnFactory tankFactory;
     [SerializeField] private EnemySpawnFactory helicopterFactory;
 
+    // Helicopter height offset
+    [SerializeField] private float helicopterHeightOffset = 10.0f;
+
     private List<GameObject> createdEnemies = new List<GameObject>();
     private int currentWaveIndex = 0;
 
     public bool killAllEnemies = false;
-
 
     private void Start()
     {
@@ -46,14 +48,14 @@ public class WaveManager : MonoBehaviour
             // Spawn tanks
             for (int i = 0; i < currentWave.tankCount; i++)
             {
-                SpawnEnemy(tankFactory);
+                SpawnEnemy(tankFactory, false);
                 yield return new WaitForSeconds(spawnDelay); // Delay each tank spawn
             }
 
             // Spawn helicopters
             for (int i = 0; i < currentWave.helicopterCount; i++)
             {
-                SpawnEnemy(helicopterFactory);
+                SpawnEnemy(helicopterFactory, true);
                 yield return new WaitForSeconds(spawnDelay); // Delay each helicopter spawn
             }
 
@@ -67,7 +69,7 @@ public class WaveManager : MonoBehaviour
         Debug.Log("All waves completed!");
     }
 
-    private void SpawnEnemy(EnemySpawnFactory factory)
+    private void SpawnEnemy(EnemySpawnFactory factory, bool isHelicopter)
     {
         if (factory == null)
         {
@@ -78,19 +80,25 @@ public class WaveManager : MonoBehaviour
         // Choose a random spawn position for this specific enemy
         Transform randomSpawnPosition = spawnPositions[Random.Range(0, spawnPositions.Length)];
 
-        // Get the spawner from the factory at the chosen position
-        ISpawner spawner = factory.GetSpawner(randomSpawnPosition.position);
+        // Adjust Y-level for helicopters
+        Vector3 spawnPosition = randomSpawnPosition.position;
+        if (isHelicopter)
+        {
+            spawnPosition.y += helicopterHeightOffset; // Add height offset for helicopters
+        }
+
+        ISpawner spawner = factory.GetSpawner(spawnPosition);
         if (spawner is Component component)
         {
             GameObject enemy = component.gameObject;
             enemy.SetActive(true);
 
-            // Register the enemy
+          
             createdEnemies.Add(enemy);
         }
     }
 
-    // Place holder to destroy all enemeis
+    // Placeholder to destroy all enemies
     private void Update()
     {
         if (killAllEnemies)
@@ -103,7 +111,6 @@ public class WaveManager : MonoBehaviour
                 }
             }
 
- 
             createdEnemies.Clear();
             killAllEnemies = false;
         }
