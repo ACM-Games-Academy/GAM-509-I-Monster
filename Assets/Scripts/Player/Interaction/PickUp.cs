@@ -5,12 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PickUp : MonoBehaviour
 {
-    public InputActionReference gripButton;
-    public GameObject handCollider;                 // Hand collider (can be left or right hand)
-    public Transform grabPosition;                  // Position where the object is held (can be left or right hand)
-    public float distanceToEnableCollision = 1.0f;  // Distance threshold to re-enable collision
-    public float moveToGrabSpeed = 5.0f;            // Speed at which the object moves to the grab position
-    public float positionTolerance = 0.01f;         // Tolerance to consider the object "reached" the grab position
+    [SerializeField] private InputActionReference gripButton;
+    [SerializeField] private GameObject handCollider;                 // Hand collider (can be left or right hand)
+    [SerializeField] private GameObject cameraObject;                 // Camera object for head tracking (for eating)
+    [SerializeField] private Transform grabPosition;                  // Position where the object is held (can be left or right hand)
+    [SerializeField] private float distanceToEnableCollision = 1.0f;  // Distance threshold to re-enable collision
+    [SerializeField] private float moveToGrabSpeed = 5.0f;            // Speed at which the object moves to the grab position
+    [SerializeField] private float positionTolerance = 0.01f;         // Tolerance to consider the object "reached" the grab position
+    [SerializeField] private AudioSource eatNoise;
+   
 
     private GameObject heldObject = null;
     private Rigidbody heldObjectRb;
@@ -44,7 +47,7 @@ public class PickUp : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(handCollider.transform.position, 0.1f);
             foreach (Collider collider in colliders)
             {
-                if (collider.CompareTag("Grabbable"))
+                if (collider.CompareTag("Grabbable") || (collider.CompareTag("Enemy")))
                 {
                     heldObject = collider.gameObject;
                     heldObjectRb = heldObject.GetComponent<Rigidbody>();
@@ -116,6 +119,17 @@ public class PickUp : MonoBehaviour
             // Calculate hand velocity for throwing
             handVelocity = (grabPosition.position - previousHandPosition) / Time.fixedDeltaTime;
             previousHandPosition = grabPosition.position;
+
+            // Distance to camera if heldObject is an Enemy
+            if (heldObject.CompareTag("Enemy"))
+            {
+                float distanceToCamera = Vector3.Distance(heldObject.transform.position, cameraObject.transform.position);
+                if (distanceToCamera <= 0.3)
+                {
+                    EatEnemy();
+                    
+                }
+            }
         }
 
         // Check if the thrown object has traveled far enough to re-enable the child object
@@ -134,4 +148,23 @@ public class PickUp : MonoBehaviour
             }
         }
     }
+    private void EatEnemy()
+    {
+        Debug.Log("Enemy Eaten");
+
+        // Play the eating sound if it's not already playing
+        if (!eatNoise.isPlaying)
+        {
+            eatNoise.Play();
+        }
+
+        // Destroy the enemy object
+        if (heldObject != null)
+        {
+            Destroy(heldObject);
+            heldObject = null;  // Clear the reference 
+            isHoldingObject = false;  // Make hand marked as free
+        }
+    }
+
 }
