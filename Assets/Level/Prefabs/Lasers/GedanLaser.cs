@@ -53,7 +53,10 @@ public class GedanLaser : MonoBehaviour
 
         foreach (RaycastHit currentHit in hits)
         {
-            
+            if (currentHit.transform.GetComponent<Enemy>())
+            {
+                currentHit.transform.GetComponent<Enemy>().giveDamage(Time.deltaTime * 10);
+            }
         }
     }
 }
