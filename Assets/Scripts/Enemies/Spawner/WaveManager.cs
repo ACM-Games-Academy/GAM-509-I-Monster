@@ -38,36 +38,43 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
-    private IEnumerator StartWave()
+  private IEnumerator StartWave()
+{
+    while (currentWaveIndex < waves.Length)
     {
-        while (currentWaveIndex < waves.Length)
-        {
-            Wave currentWave = waves[currentWaveIndex];
-            Debug.Log($"Starting Wave {currentWaveIndex + 1}");
+        Wave currentWave = waves[currentWaveIndex];
+        Debug.Log($"Starting Wave {currentWaveIndex + 1}");
 
-            // Spawn tanks
-            for (int i = 0; i < currentWave.tankCount; i++)
+        // Determine the maximum number of spawns for this wave
+        int maxCount = Mathf.Max(currentWave.tankCount, currentWave.helicopterCount);
+
+        for (int i = 0; i < maxCount; i++)
+        {
+            // Spawn a tank if within the tank count
+            if (i < currentWave.tankCount)
             {
                 SpawnEnemy(tankFactory, false);
-                yield return new WaitForSeconds(spawnDelay); // Delay each tank spawn
             }
 
-            // Spawn helicopters
-            for (int i = 0; i < currentWave.helicopterCount; i++)
+            // Spawn a helicopter if within the helicopter count
+            if (i < currentWave.helicopterCount)
             {
                 SpawnEnemy(helicopterFactory, true);
-                yield return new WaitForSeconds(spawnDelay); // Delay each helicopter spawn
             }
 
-            // Wait until all enemies from this wave are destroyed
-            yield return new WaitUntil(() => createdEnemies.Count == 0);
-
-            Debug.Log($"Wave {currentWaveIndex + 1} completed!");
-            currentWaveIndex++;
+            yield return new WaitForSeconds(spawnDelay); // Delay after each spawn iteration
         }
 
-        Debug.Log("All waves completed!");
+        // Wait until all enemies from this wave are destroyed
+        yield return new WaitUntil(() => createdEnemies.Count == 0);
+
+        Debug.Log($"Wave {currentWaveIndex + 1} completed!");
+        currentWaveIndex++;
     }
+
+    Debug.Log("All waves completed!");
+}
+
 
     private void SpawnEnemy(EnemySpawnFactory factory, bool isHelicopter)
     {
