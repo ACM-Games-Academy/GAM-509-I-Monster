@@ -16,4 +16,9 @@ public class playerModel
     {
         Health -= Amount;
     }
+
+    public void IncreaseHealth(float Amount)
+    {
+        Health += Amount;
+    }
 }

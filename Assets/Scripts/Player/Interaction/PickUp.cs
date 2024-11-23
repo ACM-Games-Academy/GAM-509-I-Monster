@@ -23,7 +23,7 @@ public class PickUp : MonoBehaviour
     private bool isObjectThrown = false;
     private bool isMovingToGrabPosition = false;  // Flag to check if object is moving to grab position
     private bool isFollowingHand = false;         // Flag to check if object should follow the hand directly
-
+    private playerModel playerModel;              // For increasing health
     private bool isHoldingObject = false;         // Tracks if this hand is holding an object
 
     private void OnEnable()
@@ -157,6 +157,8 @@ public class PickUp : MonoBehaviour
         {
             eatNoise.Play();
         }
+
+        playerModel.IncreaseHealth(10);
 
         // Destroy the enemy object
         if (heldObject != null)
