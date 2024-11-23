@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5008985014938087389}
   - component: {fileID: 5052162531930867976}
   - component: {fileID: 8786717902903719108}
-  - component: {fileID: 8690937301511945042}
   m_Layer: 0
   m_Name: TestHelicopter
   m_TagString: Untagged
@@ -108,16 +107,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8690937301511945042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5643986117870560003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504a494b720725f418278a46d756b742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Helicopter
