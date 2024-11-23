@@ -16,6 +16,7 @@ public class Missile : MonoBehaviour
     public XRGrabInteractable grabInteractable;
     public Rigidbody rb;
     public ParticleSystem fire;
+    public bool thrown;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Missile : MonoBehaviour
         if (!grabInteractable.isSelected)
         {
             lifetime += Time.deltaTime;
-            if (lifetime > 2)
+            if (lifetime > 0 && !thrown)
             {
                 aimingDummy.LookAt(target.transform.position);
                 aimingDummy.Rotate(90, 0, 0);
@@ -51,14 +52,14 @@ public class Missile : MonoBehaviour
             int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision"));
             RaycastHit hit;
             Physics.Raycast(transform.position + transform.TransformDirection(Vector3.up * 0.5f), transform.TransformDirection(Vector3.up), out hit, 2f);
-            if (hit.transform != null || Vector3.Distance(transform.position, target.position) < 0.5f)
-                if ((hit.transform != null || Vector3.Distance(transform.position, target.position) < 0.5f) && lifetime > -1)
-                {
-                    Explode();
-                }
+            if ((hit.transform != null || (Vector3.Distance(transform.position, target.position) < 0.5f && !thrown)) && lifetime > -1)
+            {
+                Explode();
+            }
         }
         else
         {
+            thrown = true;
             lifetime = -2;
         }
     }
