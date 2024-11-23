@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,39 +5,49 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum HelicopterState
+{
+    Tracking,
+    Attack,
+}
+
 public class HelicopterEnemy : Enemy
 {
     [SerializeField] private GameObject target;
+    private playerController controller;
     [SerializeField] private HelicopterData data;
     [SerializeField] private GameObject gun;
     [SerializeField] private ParticleSystem hitEffect;
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject explosion;
 
     private NavMeshAgent agent;
-    private CapsuleCollider firingArea;
     private ParticleSystem particleSys;
 
     private float posRefreshTime;
 
     private float fireRate;
+    private float firingRange;
     private float explosionPower;
     private float explosionRadius;
 
-    private Coroutine helicopterMovement;
-    private Coroutine helicopterAttack;
+    private float patrolRadius;
+
+    //runtime values
+    private float targetDistance;
+    private float attackTimer;
+    public bool atDestination;
+
+    [SerializeField] private HelicopterState state;
 
     public override void EnemyInit()
     {
         base.EnemyInit();
-        if (target == null)
-        {
-            target = Camera.main.gameObject;
-        }
 
         health = data.health;
-        posRefreshTime = data.updateTargetRefresh;
 
+        //values about damage 
         damage = data.damage;
+        firingRange = data.firingRange;
         fireRate = data.fireRate;
         explosionPower = data.explosionPower;
         explosionRadius = data.explosionRadius;
@@ -46,58 +55,17 @@ public class HelicopterEnemy : Enemy
         //setting some of the navmesh variables 
         agent = GetComponent<NavMeshAgent>();
         agent.speed = data.speed;
-        agent.stoppingDistance = data.stoppingDistance;
         agent.baseOffset = data.heightOffset;
 
-        //setting up the trigger area
-        //I thought using a trigger instead of checking the distance every frame would run more efficiently 
-        firingArea = GetComponentInChildren<CapsuleCollider>();
-        firingArea.radius = data.firingRange;
-        firingArea.height = 2 * data.heightOffset + 2 * data.firingRange;  //this increases the height and then increases it again by the radius. This is so the curved part is below the floor making it more similar to a cylinder.
+        patrolRadius = data.patrolRadius;
         
-        rb = transform.GetComponent<Rigidbody>();
-
+        //getting component references
         particleSys = gun.GetComponent<ParticleSystem>();
+        controller = target.GetComponentInParent<playerController>();
 
-        //setting some of the coroutines an starting the movement coroutine
-        helicopterMovement = StartCoroutine(HelicopterTrack());
-    }
+        atDestination = true;
 
-    private void Update()
-    {
-
-    }
-
-    //this will run for the entire time the object is alive it just makes the helicopter follow the player
-    private IEnumerator HelicopterTrack()
-    {
-        while (true)
-        {
-            agent.SetDestination(target.transform.position);
-            yield return new WaitForSeconds(posRefreshTime);
-
-            if (Vector3.Distance(target.transform.position, transform.position) < agent.stoppingDistance)
-            {
-                agent.enabled = false;
-            }
-
-            else
-            {
-                agent.enabled = true;
-            }
-        }
-    }
-    
-    private IEnumerator HelicopterAttack()
-    {
-        while (true)
-        {
-            //gun will look towards the target and then play the particle system
-            gun.transform.LookAt(target.transform.position);
-            particleSys.Play();
-            Debug.Log("Fired");
-            yield return new WaitForSeconds(fireRate);
-        }
+        state = HelicopterState.Tracking;
     }
 
     public void particleCollision(GameObject other)
@@ -112,6 +80,7 @@ public class HelicopterEnemy : Enemy
         {
             //deal damage
             //the methods for dealing damage to the player havent been defined yet.
+            controller.TakeDamage(damage);
         }
 
         //this is for if it misses the player. Id thought it'd be cool to add some explosion force if it has a rigidbody
@@ -128,38 +97,80 @@ public class HelicopterEnemy : Enemy
         Instantiate(hitEffect, colEvents[0].intersection, Quaternion.LookRotation(colEvents[0].normal));    
     }
 
-    //These controls when the attack coroutine starts and finishes
-    private void OnTriggerEnter(Collider other)
-    {   
-        if (other.gameObject == target)  //if the object inside of the trigger is the player
+    private void Update()
+    {
+        Vector2 flatPosition = new Vector2(transform.position.x, transform.position.z);
+        Vector2 flatTargetPos = new Vector2(agent.destination.x, agent.destination.z);
+        targetDistance = Vector2.Distance(flatPosition, flatTargetPos);
+
+        switch (state)
         {
-            Debug.Log("Player entered firing range");
-            helicopterAttack = StartCoroutine(HelicopterAttack());
-            //so i started firing
+            case HelicopterState.Attack:
+                Attack();
+                break;
+            case HelicopterState.Tracking:
+                Tracking();
+                break;
+        }
+
+        if (targetDistance < agent.stoppingDistance)
+        {
+            atDestination = true;
+        }
+        else
+        {
+            atDestination = false;
+        }
+
+        if (targetDistance < firingRange)
+        {
+            state = HelicopterState.Attack;
+        }
+        else
+        {
+            state = HelicopterState.Tracking;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void Attack()
     {
-        if (other.gameObject == target)
+        agent.stoppingDistance = 1;
+
+        if (atDestination)
         {
-            Debug.Log("Player exited firing range");
-            StopCoroutine(helicopterAttack);
-            //so i stopped firing
+            //helicopter is at it's destination find new waypoint       
+            Vector3 targetDest = target.transform.position + new Vector3(Random.Range(-patrolRadius, patrolRadius), 0, Random.Range(-patrolRadius, patrolRadius));
+            if (agent.SetDestination(targetDest) == false)
+            {
+                //if it cannot find a path it will wait until next frame
+                //it will then set the destination to itself 
+                agent.SetDestination(target.transform.position);
+                //this is atDestination stays trye
+                Debug.Log("coudl not find dest generated dest: " + targetDest);
+            }
         }
+
+        //gun will look towards the target and then play the particle system
+        if (attackTimer >= fireRate)
+        {
+            attackTimer = 0;
+            gun.transform.LookAt(target.transform.position);
+            particleSys.Play();
+            Debug.Log("Fired");
+        }
+
+        attackTimer += Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == target)
-        {
-            //When it hits the player it will stop using the navmesh
-            StopAllCoroutines();
-            rb.isKinematic = false;
-            gameObject.SetActive(false);
-        }
+    private void Tracking()
+    {      
+        agent.stoppingDistance = data.stoppingDistance;
 
-        
+        if (atDestination)
+        {
+            agent.SetDestination(target.transform.position);
+            Debug.Log("setting new dest");
+        }   
     }
 
     private void OnDisable()

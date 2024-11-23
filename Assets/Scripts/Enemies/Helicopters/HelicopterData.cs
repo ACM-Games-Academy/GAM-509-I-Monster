@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HelicopterData" ,menuName = "Enemies/Helicopter" ,order = 1)]
 public class HelicopterData : ScriptableObject
 {
+    
     public float health;
     public float speed;
-    public float updateTargetRefresh;
-    public float stoppingDistance;   
+
+    [Header("Stopping distance needs to be less than the firingRange")]
+    public float stoppingDistance;
+    public float patrolRadius;
 
     [Header("This is the offset from the navMesh")]
     public float heightOffset;
