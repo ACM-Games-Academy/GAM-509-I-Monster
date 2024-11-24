@@ -574,6 +574,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1261587032518548005, guid: 2526b3220ca896f42b3ab36bcb1d24a5, type: 3}
   m_PrefabInstance: {fileID: 331324749}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &411418618
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788334342702310232, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_Name
+      value: Helicopter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
 --- !u!1 &430321273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29ffc0345cc7377409ec5f5b0bc36241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helicopterPrefab: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+  helicopterPrefab: {fileID: 996080356}
   tankPrefab: {fileID: 7913356726657920699, guid: 2f55b57eb0c563c418e7a8c9cba5559b, type: 3}
   helicopterPoolSize: 10
   tankPoolSize: 10
@@ -1896,6 +1957,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+--- !u!1 &996080356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
+  m_PrefabInstance: {fileID: 411418618}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1110832260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4947,3 +5013,4 @@ SceneRoots:
   - {fileID: 584381142}
   - {fileID: 1594008127}
   - {fileID: 329978280}
+  - {fileID: 411418618}
