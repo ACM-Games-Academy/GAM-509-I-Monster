@@ -60,13 +60,29 @@ public class Missile : MonoBehaviour
         else
         {
             thrown = true;
-            lifetime = -2;
+            lifetime = 0.1f;
         }
     }
 
     public void Explode()
     {
         GameObject newExplosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        if (target ? target.GetComponent<playerController>() : false)
+        {
+            if (Vector3.Distance(target.position, transform.position) < 5)
+            {
+                target.GetComponent<playerController>().TakeDamage(50);
+            }
+        }
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < 5)
+            {
+                enemy.giveDamage(100);
+            }
+        }
 
         Destroy(gameObject);
     }
