@@ -17,7 +17,10 @@ public class Destructable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            replacementScript.Destroyed(gameObject);
+        }
     }
 
     public void OnCollisionEnter(Collision collision)

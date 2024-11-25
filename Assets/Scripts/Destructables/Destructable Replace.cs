@@ -13,7 +13,8 @@ public class DestructableReplace : MonoBehaviour
     {
         //destructibleObjectName = PrefabUtility.GetCorrespondingObjectFromSource(deadObject).name;
         //destroyedObjectGroup = ;
-        Instantiate(Resources.Load("Buildings/"+destructibleObjectName), deadObject.transform.position, deadObject.transform.rotation);
+        GameObject newObject = GameObject.Instantiate((GameObject)Resources.Load("Buildings/"+destructibleObjectName), deadObject.transform.position, deadObject.transform.rotation);
+        newObject.transform.localScale = deadObject.transform.localScale;
         deadObject.SetActive(false);
     }
 
