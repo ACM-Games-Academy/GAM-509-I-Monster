@@ -16,6 +16,7 @@ public class Missile : MonoBehaviour
     public XRGrabInteractable grabInteractable;
     public Rigidbody rb;
     public ParticleSystem fire;
+    public bool thrown;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Missile : MonoBehaviour
         if (!grabInteractable.isSelected)
         {
             lifetime += Time.deltaTime;
-            if (lifetime > 2)
+            if (lifetime > 0 && !thrown)
             {
                 aimingDummy.LookAt(target.transform.position);
                 aimingDummy.Rotate(90, 0, 0);
@@ -51,22 +52,37 @@ public class Missile : MonoBehaviour
             int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision"));
             RaycastHit hit;
             Physics.Raycast(transform.position + transform.TransformDirection(Vector3.up * 0.5f), transform.TransformDirection(Vector3.up), out hit, 2f);
-            if ((hit.transform != null || Vector3.Distance(transform.position, target.position) < 0.5f) && lifetime > -1)
+            if ((hit.transform != null || (Vector3.Distance(transform.position, target.position) < 0.5f && !thrown)) && lifetime > -1)
             {
                 Explode();
             }
         }
         else
         {
-            lifetime = -2;
-            rb.angularVelocity = Vector3.zero;
-            rb.freezeRotation = true;
+            thrown = true;
+            lifetime = 0.1f;
         }
     }
 
     public void Explode()
     {
         GameObject newExplosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+        if (target ? target.GetComponent<playerController>() : false)
+        {
+            if (Vector3.Distance(target.position, transform.position) < 5)
+            {
+                target.GetComponent<playerController>().TakeDamage(50);
+            }
+        }
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < 5)
+            {
+                enemy.giveDamage(100);
+            }
+        }
 
         Destroy(gameObject);
     }
