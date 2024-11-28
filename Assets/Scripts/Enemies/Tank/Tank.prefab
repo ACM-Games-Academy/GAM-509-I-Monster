@@ -1939,6 +1939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4106d9df4915fb4b9fbef77da5e7e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  allowPhysicsDamage: 1
   missilePrefab: {fileID: 485884289040134609, guid: 6b62a6fa751e59b4690743599323f164, type: 3}
   launchPoint: {fileID: 5097947102277902218}
   aimingDummy: {fileID: 773108596246675267}

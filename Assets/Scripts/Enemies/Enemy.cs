@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    protected float health;
+    [SerializeField] protected float health;
     protected float damage;
     public bool allowPhysicsDamage = true;
 
