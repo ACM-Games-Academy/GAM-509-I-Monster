@@ -18,6 +18,8 @@ public class lazerController : MonoBehaviour
     [SerializeField] private float energyRegen;
 
     [SerializeField] private bool overheated = false;
+    public bool Overheated
+    { get { return overheated; } }
     [SerializeField] private float overheatedTime;
 
     private bool canFire = true;
