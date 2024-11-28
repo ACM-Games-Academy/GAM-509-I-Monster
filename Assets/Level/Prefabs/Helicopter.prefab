@@ -4915,7 +4915,7 @@ GameObject:
   - component: {fileID: 6040149436407104508}
   - component: {fileID: 3671264147792125236}
   - component: {fileID: 7583962763340158207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Helicopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,6 +5000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3558bfc9511f59458a2db3259781f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  allowPhysicsDamage: 1
   target: {fileID: 0}
   data: {fileID: 11400000, guid: 37c02e9f963e66349aeda82847c4588f, type: 2}
   gun: {fileID: 4604463973796415982}
