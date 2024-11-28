@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,37 +6,34 @@ using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
+    [SerializeField] private float startingHealth;
+
+
+    public float Health
+    { get { return playerModel.Health; } }
+
     private playerModel playerModel;
-    public InputActionReference leftGrab;
-    public InputActionReference rightGrab;
-    public GameObject leftLaser;
-    public GameObject rightLaser;
+    private EventHandler playerDeath;
 
     private void Start()
     {
         playerModel = new playerModel();
-    }
 
-    private void Update()
-    {
-        leftLaser.SetActive(leftGrab.action.ReadValue<float>() > 0.5f);
-        rightLaser.SetActive(rightGrab.action.ReadValue<float>() > 0.5f);
+        playerModel.Health = startingHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        playerModel.ReduceHealth(damage);
-        if (playerModel.GetHealth() <= 0)
+        playerModel.Health -= damage;
+        if (playerModel.Health <= 0)
         {
             Debug.Log("Game Over");
-        }
+            OnPlayerDeath();
+        }        
     }
 
-    public void OnParticleCollision(GameObject other)
+    private void OnPlayerDeath()
     {
-        if (other.transform.name == "gun")
-        {
-            TakeDamage(10);
-        }
+        playerDeath.Invoke(this, EventArgs.Empty);
     }
 }

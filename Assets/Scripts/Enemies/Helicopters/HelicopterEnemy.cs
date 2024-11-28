@@ -76,8 +76,9 @@ public class HelicopterEnemy : Enemy
 
         Debug.Log("hit");
 
-        if (other == target)
+        if (other.tag == "Player")
         {
+            Debug.Log("Hit Player");
             //deal damage
             //the methods for dealing damage to the player havent been defined yet.
             controller.TakeDamage(damage);
