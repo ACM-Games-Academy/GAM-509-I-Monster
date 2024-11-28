@@ -7363,11 +7363,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
---- !u!1 &1207875842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7772040881650029145, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
-  m_PrefabInstance: {fileID: 921696084}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1212151259
 GameObject:
   m_ObjectHideFlags: 0
@@ -8348,7 +8343,7 @@ PrefabInstance:
     - target: {fileID: 3325172153453807544, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1207875842}
+      objectReference: {fileID: 0}
     - target: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
       propertyPath: m_Name
       value: Helicopter

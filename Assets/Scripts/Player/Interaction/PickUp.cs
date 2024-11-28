@@ -50,6 +50,7 @@ public class PickUp : MonoBehaviour
                 if (collider.CompareTag("Grabbable") || (collider.CompareTag("Enemy")))
                 {
                     heldObject = collider.gameObject;
+                    heldObject.GetComponent<Collider>().enabled = false;  // Disable object's own collision
                     heldObjectRb = heldObject.GetComponent<Rigidbody>();
                     heldObjectCollider = heldObject.GetComponent<Collider>();
 
@@ -82,6 +83,7 @@ public class PickUp : MonoBehaviour
                 Debug.Log("Object thrown by " + gameObject.name + " with velocity: " + handVelocity);
             }
 
+            heldObject.GetComponent<Collider>().enabled = true;  // Re-enable object's own collision
             heldObject = null;
             isHoldingObject = false;            // Mark this hand as no longer holding an object
             isMovingToGrabPosition = false;     // Stop moving to grab position
