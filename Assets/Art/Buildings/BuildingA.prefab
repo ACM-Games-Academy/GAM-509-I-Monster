@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 125859147398573648}
   - component: {fileID: 5437248244342757734}
   - component: {fileID: 1715025236677205146}
+  - component: {fileID: 7019377256717870849}
+  - component: {fileID: 7113778299776969584}
   m_Layer: 0
   m_Name: BuildingA
   m_TagString: Untagged
@@ -105,3 +107,29 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7019377256717870849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689708895721888777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7bf9ad341f5d6742a3c299af3566877, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &7113778299776969584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689708895721888777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d95a485bc39224daa3ffbca77a3b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructibleObjectName: Test Building Explosion

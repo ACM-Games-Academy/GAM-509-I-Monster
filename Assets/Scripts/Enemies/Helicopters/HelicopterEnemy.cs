@@ -148,6 +148,8 @@ public class HelicopterEnemy : Enemy
         {
             state = HelicopterState.Tracking;
         }
+
+        Debug.Log("Helicopter health: " + health);
     }
 
     private void Attack()
@@ -198,7 +200,7 @@ public class HelicopterEnemy : Enemy
 
     private void Start()
     {
-        EnemyInit();
+        
     }
 
     private void OnDestroy()
