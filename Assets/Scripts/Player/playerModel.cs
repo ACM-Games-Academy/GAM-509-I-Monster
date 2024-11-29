@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class playerModel
 {
-    float Health = 100;
-
-    public float GetHealth()
+    float health = 100;
+    public float Health
     {
-        return Health;
+        get { return health; }
+        set { health = value; }
     }
 
     // Update is called once per frame
     public void ReduceHealth(float Amount)
     {
-        Health -= Amount;
+        health -= Amount;
     }
 
     public void IncreaseHealth(float Amount)
     {
-        Health += Amount;
+        health += Amount;
     }
 }
