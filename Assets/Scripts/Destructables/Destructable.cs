@@ -7,7 +7,6 @@ public class Destructable : MonoBehaviour
     [HideInInspector]
     private DestructableReplace replacementScript;
     public float health;
-    bool objectDestroyed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +25,10 @@ public class Destructable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.impulse.magnitude>1) health -= collision.impulse.magnitude * (collision.collider.bounds.size.magnitude / 200);
-        if (health < 0&&objectDestroyed==false)
+        health -= collision.relativeVelocity.magnitude * (collision.collider.bounds.size.magnitude / 2);
+        if (health <= 0)
         {
             replacementScript.Destroyed(gameObject);
-            objectDestroyed = true;
         }
     }
 }

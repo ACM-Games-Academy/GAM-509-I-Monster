@@ -61,6 +61,8 @@ public class Missile : MonoBehaviour
         {
             thrown = true;
             lifetime = 0.1f;
+            rb.angularVelocity = Vector3.zero;
+            rb.freezeRotation = true;
         }
     }
 

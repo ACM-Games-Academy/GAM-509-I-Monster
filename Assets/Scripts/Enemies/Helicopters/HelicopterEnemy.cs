@@ -11,9 +11,10 @@ public enum HelicopterState
     Attack,
 }
 
+
 public class HelicopterEnemy : Enemy
 {
-    [SerializeField] private GameObject target;
+    [SerializeField] public GameObject target;
     private playerController controller;
     [SerializeField] private HelicopterData data;
     [SerializeField] private GameObject gun;
@@ -62,6 +63,22 @@ public class HelicopterEnemy : Enemy
         //getting component references
         particleSys = gun.GetComponent<ParticleSystem>();
         controller = target.GetComponentInParent<playerController>();
+
+        // Assign target if null
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player");
+            if (target == null)
+            {
+                Debug.LogError("No GameObject with tag 'Player' found during EnemyInit!");
+                return; // Exit if no target is found
+            }
+        }
+
+        controller = target.GetComponentInParent<playerController>();
+
+
+
 
         atDestination = true;
 
@@ -179,8 +196,15 @@ public class HelicopterEnemy : Enemy
         StopAllCoroutines();
     }
 
+    private void Start()
+    {
+        EnemyInit();
+    }
+
     private void OnDestroy()
     {
         StopAllCoroutines();
     }
+
+   
 }

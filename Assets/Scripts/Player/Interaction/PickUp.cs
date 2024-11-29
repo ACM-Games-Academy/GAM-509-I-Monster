@@ -23,7 +23,7 @@ public class PickUp : MonoBehaviour
     private bool isObjectThrown = false;
     private bool isMovingToGrabPosition = false;  // Flag to check if object is moving to grab position
     private bool isFollowingHand = false;         // Flag to check if object should follow the hand directly
-
+    private playerModel playerModel;              // For increasing health
     private bool isHoldingObject = false;         // Tracks if this hand is holding an object
 
     private void OnEnable()
@@ -50,6 +50,7 @@ public class PickUp : MonoBehaviour
                 if (collider.CompareTag("Grabbable") || (collider.CompareTag("Enemy")))
                 {
                     heldObject = collider.gameObject;
+                    heldObject.GetComponent<Collider>().enabled = false;  // Disable object's own collision
                     heldObjectRb = heldObject.GetComponent<Rigidbody>();
                     heldObjectCollider = heldObject.GetComponent<Collider>();
 
@@ -82,6 +83,7 @@ public class PickUp : MonoBehaviour
                 Debug.Log("Object thrown by " + gameObject.name + " with velocity: " + handVelocity);
             }
 
+            heldObject.GetComponent<Collider>().enabled = true;  // Re-enable object's own collision
             heldObject = null;
             isHoldingObject = false;            // Mark this hand as no longer holding an object
             isMovingToGrabPosition = false;     // Stop moving to grab position
@@ -157,6 +159,8 @@ public class PickUp : MonoBehaviour
         {
             eatNoise.Play();
         }
+
+        playerModel.IncreaseHealth(10);
 
         // Destroy the enemy object
         if (heldObject != null)
