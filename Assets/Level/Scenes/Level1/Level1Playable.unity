@@ -11236,45 +11236,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4689708895721888777, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1997444370}
-    - targetCorrespondingSourceObject: {fileID: 4689708895721888777, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1997444371}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
---- !u!1 &1997444369 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4689708895721888777, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
-  m_PrefabInstance: {fileID: 1997444368}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1997444370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997444369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7bf9ad341f5d6742a3c299af3566877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
---- !u!114 &1997444371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997444369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d95a485bc39224daa3ffbca77a3b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destructibleObjectName: Test Building Explosion
 --- !u!4 &2004875776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3042938134810258263, guid: 5fb8e68304fa5a942a6404ed70e1a02b, type: 3}
