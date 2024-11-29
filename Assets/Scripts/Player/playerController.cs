@@ -29,7 +29,7 @@ public class playerController : MonoBehaviour
         {
             Debug.Log("Game Over");
             OnPlayerDeath();
-        }        
+        }
     }
 
     private void OnPlayerDeath()

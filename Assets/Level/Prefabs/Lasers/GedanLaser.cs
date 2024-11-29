@@ -55,7 +55,7 @@ public class GedanLaser : MonoBehaviour
         {
             if (currentHit.transform.GetComponent<Enemy>())
             {
-                currentHit.transform.GetComponent<Enemy>().giveDamage(Time.deltaTime * 50);
+                currentHit.transform.GetComponent<Enemy>().giveDamage(Time.deltaTime * 2);
             }
         }
     }

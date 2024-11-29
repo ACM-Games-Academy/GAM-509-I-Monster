@@ -78,6 +78,7 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnEnemy(EnemySpawnFactory factory, bool isHelicopter)
     {
+
         if (factory == null)
         {
             Debug.LogError("Enemy factory is null!");
@@ -101,10 +102,10 @@ public class WaveManager : MonoBehaviour
             GameObject enemy = component.gameObject;
             enemy.SetActive(true);
 
-            // Initialize helicopter
+            // Initialize the enemy if it's a helicopter
             if (isHelicopter && enemy.TryGetComponent<HelicopterEnemy>(out HelicopterEnemy helicopterEnemy))
             {
-                helicopterEnemy.EnemyInit();
+                helicopterEnemy.EnemyInit(); // Call instance method properly
             }
 
             createdEnemies.Add(enemy);

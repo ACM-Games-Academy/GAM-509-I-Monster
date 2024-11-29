@@ -1900,6 +1900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 169731055522131140}
   - component: {fileID: 372820150056514203}
+  - component: {fileID: 1496075067681003963}
   - component: {fileID: 4359238429172759996}
   - component: {fileID: 3360285881227015017}
   m_Layer: 6
@@ -1939,6 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  allowPhysicsDamage: 1
   missilePrefab: {fileID: 485884289040134609, guid: 6b62a6fa751e59b4690743599323f164, type: 3}
   launchPoint: {fileID: 5097947102277902218}
   aimingDummy: {fileID: 773108596246675267}
@@ -1947,6 +1949,19 @@ MonoBehaviour:
   cooldown: 1
   targetPosition: {x: 0, y: 0, z: 0}
   agent: {fileID: 3360285881227015017}
+--- !u!114 &1496075067681003963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913356726657920699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3807b509f954d29468e36aa10aac9e9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyName: Tank
 --- !u!65 &4359238429172759996
 BoxCollider:
   m_ObjectHideFlags: 0

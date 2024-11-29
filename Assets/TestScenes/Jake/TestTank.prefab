@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9056700018554128892}
   - component: {fileID: 2047664137963042130}
   - component: {fileID: 4133763508944360572}
-  - component: {fileID: 5036381591988784958}
   m_Layer: 0
   m_Name: TestTank
   m_TagString: Untagged
@@ -106,16 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5036381591988784958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3609127330494395069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3807b509f954d29468e36aa10aac9e9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyName: Tank
