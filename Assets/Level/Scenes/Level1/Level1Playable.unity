@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 5d3975e64b4d2ae4784a0e8209785ebb, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5569,6 +5569,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 193010160531262529, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2508831267367399168, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
       propertyPath: cameraObject
       value: 
@@ -5581,10 +5585,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5544082130430272038, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1661539167}
+    - target: {fileID: 5544082130430272038, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+      propertyPath: enemyCounter
+      value: 
+      objectReference: {fileID: 971836879}
     - target: {fileID: 5546041533386453430, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 1986977894}
+    - target: {fileID: 6877556076091572896, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8285070111046192737, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
       propertyPath: cameraObject
       value: 
@@ -6066,6 +6082,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962473734}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &971836879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 193010160531262529, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+  m_PrefabInstance: {fileID: 921696084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &992438696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8428,7 +8449,7 @@ PrefabInstance:
     - target: {fileID: 3325172153453807544, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1986977894}
     - target: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
       propertyPath: m_Name
       value: Helicopter
@@ -8439,7 +8460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5528002204713192144, guid: e737ffe1cd84c6449b75bea6474a0f54, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9482,6 +9503,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}
+--- !u!1 &1661539167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6877556076091572896, guid: fe76a0bc3533c864f92ffceee94a15dc, type: 3}
+  m_PrefabInstance: {fileID: 921696084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1682658114 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1261587032518548005, guid: 2526b3220ca896f42b3ab36bcb1d24a5, type: 3}
