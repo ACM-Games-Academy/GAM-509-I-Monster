@@ -25,6 +25,12 @@ public class lazerController : MonoBehaviour
     private bool canFire = true;
     private bool hasFired = false;
 
+    [SerializeField] Renderer leftConVisual;
+    [SerializeField] Renderer rightConVisual;
+    [SerializeField] Color ogColour;
+
+    private 
+
     Coroutine overheatedCo;
     Coroutine CantFireCo;
 
@@ -33,6 +39,11 @@ public class lazerController : MonoBehaviour
     [SerializeField] private GameObject leftLaser;
     [SerializeField] private GameObject rightLaser;
 
+    private void Start()
+    {
+        ogColour = leftConVisual.material.color;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +51,18 @@ public class lazerController : MonoBehaviour
         FireLazers(rightGrab, rightLaser, energyDrain);
 
         EnergyRegen();
+
+        laserColourUpdate();
+
+        hasFired = false;
+    }
+
+    private void laserColourUpdate()
+    {
+        Color newColour = Color.Lerp(Color.red, ogColour, LaserEnergy/LaserMaxEnergy);
+
+        leftConVisual.material.color = newColour;
+        rightConVisual.material.color = newColour;
     }
 
     private void FireLazers(InputActionReference grab, GameObject lazer, float energyDrain)
@@ -113,7 +136,7 @@ public class lazerController : MonoBehaviour
         
         yield return new WaitForSeconds(secondsTillHalf);
         canFire = true;
-
+        Debug.Log("Lazer can now fire again");
         overheatedCo = null;   //a function checks if this coroutine is null so it doesn't make 2. So i need to set it to null when the coroutine is over 
     }
 

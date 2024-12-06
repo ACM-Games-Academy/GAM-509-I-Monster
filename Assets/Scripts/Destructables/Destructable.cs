@@ -25,7 +25,7 @@ public class Destructable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        health -= collision.relativeVelocity.magnitude * (collision.collider.bounds.size.magnitude / 2);
+        health -= collision.relativeVelocity.magnitude * 5; //(collision.collider.bounds.size.magnitude / 2);
         if (health <= 0)
         {
             replacementScript.Destroyed(gameObject);

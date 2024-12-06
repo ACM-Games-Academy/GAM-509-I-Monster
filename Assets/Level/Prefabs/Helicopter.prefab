@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2357120015279466155}
   - component: {fileID: 7736109289667545417}
   - component: {fileID: 7874172808470991931}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4915,7 +4915,7 @@ GameObject:
   - component: {fileID: 6040149436407104508}
   - component: {fileID: 3671264147792125236}
   - component: {fileID: 7583962763340158207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Helicopter
   m_TagString: Enemy
   m_Icon: {fileID: 0}

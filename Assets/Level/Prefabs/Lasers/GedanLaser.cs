@@ -20,8 +20,8 @@ public class GedanLaser : MonoBehaviour
         Vector3 startPoint = transform.position + (transform.forward * 0.125f);
         Vector3 endPoint = Vector3.zero;
         RaycastHit hit = new RaycastHit();
-        int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision") | 1 << LayerMask.NameToLayer("Player Attack Hitbox") | 1 << LayerMask.NameToLayer("2D Section") | 1 << LayerMask.NameToLayer("Viewmodel") | 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Player 1") | 1 << LayerMask.NameToLayer("Player 2") | 1 << LayerMask.NameToLayer("Player 3") | 1 << LayerMask.NameToLayer("Player 4") | 1 << LayerMask.NameToLayer("Enemy"));
-        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, LayersToIgnore);
+        //int LayersToIgnore = ~(1 << LayerMask.NameToLayer("No Collision") | 1 << LayerMask.NameToLayer("Player Attack Hitbox") | 1 << LayerMask.NameToLayer("2D Section") | 1 << LayerMask.NameToLayer("Viewmodel") | 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Player 1") | 1 << LayerMask.NameToLayer("Player 2") | 1 << LayerMask.NameToLayer("Player 3") | 1 << LayerMask.NameToLayer("Player 4") | 1 << LayerMask.NameToLayer("Enemy"));
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100);
         if (hit.transform != null)
         {
             endPoint = hit.point + (transform.TransformDirection(Vector3.back) * 0.5f);
