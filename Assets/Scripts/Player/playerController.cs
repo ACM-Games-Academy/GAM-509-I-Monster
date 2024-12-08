@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour
     { get { return playerModel.Health; } }
 
     private playerModel playerModel;
-    private EventHandler playerDeath;
+    public EventHandler playerDeath;
 
     [SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject enemyCounter;

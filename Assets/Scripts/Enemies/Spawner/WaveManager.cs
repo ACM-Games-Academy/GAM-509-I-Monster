@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WaveManager : MonoBehaviour
 {
@@ -28,6 +30,8 @@ public class WaveManager : MonoBehaviour
     // Helicopter height offset
     [SerializeField] private float helicopterHeightOffset = 10.0f;
 
+    public EventHandler levelComplete;
+
     private List<GameObject> createdEnemies = new List<GameObject>();
     private int currentWaveIndex = 0;
 
@@ -38,42 +42,44 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
-  private IEnumerator StartWave()
-{
-    while (currentWaveIndex < waves.Length)
+    private IEnumerator StartWave()
     {
-        Wave currentWave = waves[currentWaveIndex];
-        Debug.Log($"Starting Wave {currentWaveIndex + 1}");
-
-        // Determine the maximum number of spawns for this wave
-        int maxCount = Mathf.Max(currentWave.tankCount, currentWave.helicopterCount);
-
-        for (int i = 0; i < maxCount; i++)
+        while (currentWaveIndex < waves.Length)
         {
-            // Spawn a tank if within the tank count
-            if (i < currentWave.tankCount)
+            Wave currentWave = waves[currentWaveIndex];
+            Debug.Log($"Starting Wave {currentWaveIndex + 1}");
+
+            // Determine the maximum number of spawns for this wave
+            int maxCount = Mathf.Max(currentWave.tankCount, currentWave.helicopterCount);
+
+            for (int i = 0; i < maxCount; i++)
             {
-                SpawnEnemy(tankFactory, false);
+                // Spawn a tank if within the tank count
+                if (i < currentWave.tankCount)
+                {
+                    SpawnEnemy(tankFactory, false);
+                }
+
+                // Spawn a helicopter if within the helicopter count
+                if (i < currentWave.helicopterCount)
+                {
+                    SpawnEnemy(helicopterFactory, true);
+                }
+
+                yield return new WaitForSeconds(spawnDelay); // Delay after each spawn iteration
             }
 
-            // Spawn a helicopter if within the helicopter count
-            if (i < currentWave.helicopterCount)
-            {
-                SpawnEnemy(helicopterFactory, true);
-            }
+            // Wait until all enemies from this wave are destroyed
+            yield return new WaitUntil(() => createdEnemies.Count == 0);
 
-            yield return new WaitForSeconds(spawnDelay); // Delay after each spawn iteration
+            Debug.Log($"Wave {currentWaveIndex + 1} completed!");
+            currentWaveIndex++;
         }
 
-        // Wait until all enemies from this wave are destroyed
-        yield return new WaitUntil(() => createdEnemies.Count == 0);
 
-        Debug.Log($"Wave {currentWaveIndex + 1} completed!");
-        currentWaveIndex++;
+        Debug.Log("All waves completed!");
+        levelComplete.Invoke(this, EventArgs.Empty);
     }
-
-    Debug.Log("All waves completed!");
-}
 
 
     private void SpawnEnemy(EnemySpawnFactory factory, bool isHelicopter)
@@ -86,7 +92,7 @@ public class WaveManager : MonoBehaviour
         }
 
         // Choose a random spawn position for this specific enemy
-        Transform randomSpawnPosition = spawnPositions[Random.Range(0, spawnPositions.Length)];
+        Transform randomSpawnPosition = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)];
 
         // Adjust Y-level for helicopters
         Vector3 spawnPosition = randomSpawnPosition.position;

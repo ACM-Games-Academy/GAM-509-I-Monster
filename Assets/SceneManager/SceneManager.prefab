@@ -257,4 +257,6 @@ MonoBehaviour:
   crossFade: {fileID: 5613535438698192610}
   menuIndex: 0
   level1Index: 1
+  failScreenIndex: 2
+  winScreenIndex: 3
   transTime: 1
