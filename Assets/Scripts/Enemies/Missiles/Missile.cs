@@ -70,11 +70,11 @@ public class Missile : MonoBehaviour
     {
         GameObject newExplosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        if (target ? target.GetComponent<playerController>() : false)
+        if (target ? target.GetComponentInParent<playerController>() : false)
         {
             if (Vector3.Distance(target.position, transform.position) < 5)
             {
-                target.GetComponent<playerController>().TakeDamage(50);
+                target.GetComponentInParent<playerController>().TakeDamage(20);
             }
         }
         Enemy[] enemies = FindObjectsOfType<Enemy>();

@@ -126,13 +126,11 @@ public class PickUp : MonoBehaviour
             if (heldObject.CompareTag("Consumable"))
             {
                 float distanceToCamera = Vector3.Distance(heldObject.transform.position, cameraObject.transform.position);
-                Debug.Log("Consumable: " + distanceToCamera);
-                if (distanceToCamera <= 5f)
+
+                if (distanceToCamera < 10)
                 {
                     EatEnemy();              
                 }
-
-                Debug.Log("Distance to enemy from mouth: " +  distanceToCamera);
             }
         }
 
@@ -154,7 +152,8 @@ public class PickUp : MonoBehaviour
     }
     private void EatEnemy()
     {
-        this.gameObject.GetComponent<playerModel>().IncreaseHealth(10);
+        Debug.Log("Started");
+        GetComponentInParent<playerController>().IncreaseHealth(10);
 
         // Destroy the enemy object
         if (heldObject != null)

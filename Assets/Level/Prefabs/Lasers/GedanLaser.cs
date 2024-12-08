@@ -27,7 +27,6 @@ public class GedanLaser : MonoBehaviour
             endPoint = hit.point + (transform.TransformDirection(Vector3.back) * 0.5f);
             laserImpact.position = endPoint + (transform.TransformDirection(Vector3.forward) * 0.5f);
             laserImpact.rotation = Quaternion.LookRotation(hit.normal);
-            print(hit.transform.name);
         }
         else
         {

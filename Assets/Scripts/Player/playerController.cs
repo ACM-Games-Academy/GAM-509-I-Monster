@@ -25,6 +25,8 @@ public class playerController : MonoBehaviour
         playerModel.Health = startingHealth;
 
         numOfEnemies = 0;
+
+        healthBar.GetComponentInChildren<TMP_Text>().text = playerModel.Health.ToString();
     }
 
     private void Update()
@@ -43,6 +45,12 @@ public class playerController : MonoBehaviour
             Debug.Log("Game Over");
             OnPlayerDeath();
         }
+    }
+
+    public void IncreaseHealth(float health)
+    {
+        playerModel.IncreaseHealth(health);
+        healthBar.GetComponentInChildren<TMP_Text>().text = playerModel.Health.ToString();
     }
 
     private void OnPlayerDeath()
