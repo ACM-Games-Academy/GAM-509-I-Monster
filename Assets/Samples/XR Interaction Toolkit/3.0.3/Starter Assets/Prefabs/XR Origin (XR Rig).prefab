@@ -991,6 +991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 200
+  healthBar: {fileID: 0}
+  enemyCounter: {fileID: 0}
 --- !u!114 &1178791450436251564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1124,9 @@ MonoBehaviour:
   energyRegen: 10
   overheated: 0
   overheatedTime: 3
+  leftConVisual: {fileID: 0}
+  rightConVisual: {fileID: 0}
+  ogColour: {r: 0, g: 0, b: 0, a: 0}
   leftGrab: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightGrab: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftLaser: {fileID: 5738389719021723524}

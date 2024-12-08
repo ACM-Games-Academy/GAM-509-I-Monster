@@ -128,5 +128,15 @@ public class WaveManager : MonoBehaviour
             createdEnemies.Clear();
             killAllEnemies = false;
         }
+
+
+        //quick update - Launcelot
+        foreach (var enemy in createdEnemies)
+        {
+            if (enemy.active == false)
+            {
+                createdEnemies.Remove(enemy);
+            }
+        }
     }
 }

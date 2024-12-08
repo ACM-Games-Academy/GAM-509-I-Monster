@@ -91,11 +91,9 @@ public class HelicopterEnemy : Enemy
 
         int colEvent = particleSys.GetCollisionEvents(other, colEvents);
 
-        Debug.Log("hit");
 
         if (other.tag == "Player")
         {
-            Debug.Log("Hit Player");
             //deal damage
             //the methods for dealing damage to the player havent been defined yet.
             controller.TakeDamage(damage);
@@ -148,8 +146,6 @@ public class HelicopterEnemy : Enemy
         {
             state = HelicopterState.Tracking;
         }
-
-        Debug.Log("Helicopter health: " + health);
     }
 
     private void Attack()
@@ -166,7 +162,6 @@ public class HelicopterEnemy : Enemy
                 //it will then set the destination to itself 
                 agent.SetDestination(target.transform.position);
                 //this is atDestination stays trye
-                Debug.Log("coudl not find dest generated dest: " + targetDest);
             }
         }
 
@@ -176,7 +171,6 @@ public class HelicopterEnemy : Enemy
             attackTimer = 0;
             gun.transform.LookAt(target.transform.position);
             particleSys.Play();
-            Debug.Log("Fired");
         }
 
         attackTimer += Time.deltaTime;
@@ -186,10 +180,10 @@ public class HelicopterEnemy : Enemy
     {      
         agent.stoppingDistance = data.stoppingDistance;
 
+        //if at destination find new one 
         if (atDestination)
         {
             agent.SetDestination(target.transform.position);
-            Debug.Log("setting new dest");
         }   
     }
 

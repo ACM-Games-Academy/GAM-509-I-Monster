@@ -50,6 +50,6 @@ public class playerController : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        playerDeath.Invoke(this, EventArgs.Empty);
+        playerDeath?.Invoke(this, EventArgs.Empty);
     }
 }

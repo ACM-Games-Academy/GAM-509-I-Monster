@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 24071858}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2714,7 +2714,7 @@ GameObject:
   - component: {fileID: 382163128}
   m_Layer: 0
   m_Name: Enemy (3)
-  m_TagString: Enemy
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3619,7 +3619,7 @@ GameObject:
   - component: {fileID: 641892136}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Enemy
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3739,7 +3739,7 @@ Transform:
   m_GameObject: {fileID: 647944837}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.76, y: 0, z: -15.27}
+  m_LocalPosition: {x: 21.116, y: 0, z: -14.699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4143,7 +4143,7 @@ GameObject:
   - component: {fileID: 712986706}
   m_Layer: 0
   m_Name: Cube (7)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5186,7 +5186,7 @@ GameObject:
   - component: {fileID: 879385738}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5637,7 +5637,7 @@ GameObject:
   - component: {fileID: 949898470}
   m_Layer: 0
   m_Name: Enemy (4)
-  m_TagString: Enemy
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6773,7 +6773,7 @@ GameObject:
   - component: {fileID: 1156266337}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8185,7 +8185,7 @@ GameObject:
   - component: {fileID: 1371695370}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9278,7 +9278,7 @@ GameObject:
   - component: {fileID: 1641118022}
   m_Layer: 0
   m_Name: Cube (6)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9473,7 +9473,7 @@ Transform:
   m_GameObject: {fileID: 1690699387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.2, y: 0, z: 10.4}
+  m_LocalPosition: {x: -17.32, y: 0, z: -20.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10053,7 +10053,7 @@ Transform:
   m_GameObject: {fileID: 1745123599}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9, y: 0, z: 15.6}
+  m_LocalPosition: {x: 9, y: 0, z: 20.394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10078,7 +10078,7 @@ GameObject:
   - component: {fileID: 1794127334}
   m_Layer: 0
   m_Name: Enemy (2)
-  m_TagString: Enemy
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10187,7 +10187,7 @@ GameObject:
   - component: {fileID: 1797131394}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10782,7 +10782,7 @@ GameObject:
   - component: {fileID: 1990386047}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11773,7 +11773,7 @@ GameObject:
   - component: {fileID: 2107442242}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12231,7 +12231,7 @@ Transform:
   m_GameObject: {fileID: 2144588921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: 0, z: -15.1}
+  m_LocalPosition: {x: -17.85, y: 0, z: 19.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class fuelContainer : Enemy
 {
-    fuelContainerData data;
+    [SerializeField] fuelContainerData data;
     private float damageRange;
 
     [SerializeField] GameObject explosionEffect;

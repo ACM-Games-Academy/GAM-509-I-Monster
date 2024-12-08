@@ -47,7 +47,7 @@ public class PickUp : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(handCollider.transform.position, 0.1f);
             foreach (Collider collider in colliders)
             {
-                if (collider.CompareTag("Grabbable") || (collider.CompareTag("Enemy")))
+                if (collider.CompareTag("Grabbable") || (collider.CompareTag("Consumable")))
                 {
                     heldObject = collider.gameObject;
                     heldObject.GetComponent<Collider>().enabled = false;  // Disable object's own collision
@@ -123,13 +123,13 @@ public class PickUp : MonoBehaviour
             previousHandPosition = grabPosition.position;
 
             // Distance to camera if heldObject is an Enemy
-            if (heldObject.CompareTag("Enemy"))
+            if (heldObject.CompareTag("Consumable"))
             {
                 float distanceToCamera = Vector3.Distance(heldObject.transform.position, cameraObject.transform.position);
-                if (distanceToCamera <= 5)
+                Debug.Log("Consumable: " + distanceToCamera);
+                if (distanceToCamera <= 5f)
                 {
-                    EatEnemy();
-                    
+                    EatEnemy();              
                 }
 
                 Debug.Log("Distance to enemy from mouth: " +  distanceToCamera);
@@ -154,15 +154,7 @@ public class PickUp : MonoBehaviour
     }
     private void EatEnemy()
     {
-        Debug.Log("Enemy Eaten");
-
-        // Play the eating sound if it's not already playing
-        if (!eatNoise.isPlaying)
-        {
-            eatNoise.Play();
-        }
-
-        playerModel.IncreaseHealth(10);
+        this.gameObject.GetComponent<playerModel>().IncreaseHealth(10);
 
         // Destroy the enemy object
         if (heldObject != null)
@@ -171,6 +163,7 @@ public class PickUp : MonoBehaviour
             heldObject = null;  // Clear the reference 
             isHoldingObject = false;  // Make hand marked as free
         }
-    }
 
+        Debug.Log("Enemy Eaten");
+    }
 }

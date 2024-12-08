@@ -65,6 +65,7 @@ MonoBehaviour:
   grabInteractable: {fileID: 6991955403107723864}
   rb: {fileID: 4375786475408258146}
   fire: {fileID: 3357163403455458079}
+  thrown: 0
 --- !u!54 &4375786475408258146
 Rigidbody:
   m_ObjectHideFlags: 0
