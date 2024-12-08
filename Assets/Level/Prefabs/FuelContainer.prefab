@@ -256,4 +256,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   allowPhysicsDamage: 1
+  data: {fileID: 11400000, guid: 221082e35143d2846adf8d72fa1f0114, type: 2}
   explosionEffect: {fileID: 4173908624909887849, guid: b4b7952240741a6469629d4530696bf9, type: 3}
