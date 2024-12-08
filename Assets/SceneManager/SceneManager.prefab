@@ -255,4 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossFade: {fileID: 5613535438698192610}
+  menuIndex: 0
+  level1Index: 1
   transTime: 1

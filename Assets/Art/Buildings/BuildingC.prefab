@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5246929350226425156}
   - component: {fileID: 4897794130777300601}
   - component: {fileID: 561534265513929206}
+  - component: {fileID: 2223890611682980009}
   m_Layer: 0
   m_Name: BuildingC
   m_TagString: Untagged
@@ -133,3 +134,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destructibleObjectName: Test Building Explosion
+--- !u!114 &2223890611682980009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075741363560124367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
