@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6204020278486345266}
   - component: {fileID: 7631867779832082302}
   - component: {fileID: 7780161680157559464}
+  - component: {fileID: 4492676765051337116}
   m_Layer: 0
   m_Name: FuelContainer
   m_TagString: Grabbable
@@ -258,3 +259,19 @@ MonoBehaviour:
   allowPhysicsDamage: 1
   data: {fileID: 11400000, guid: 221082e35143d2846adf8d72fa1f0114, type: 2}
   explosionEffect: {fileID: 4173908624909887849, guid: b4b7952240741a6469629d4530696bf9, type: 3}
+--- !u!208 &4492676765051337116
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6028245048068062561}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -127,7 +127,7 @@ public class PickUp : MonoBehaviour
             {
                 float distanceToCamera = Vector3.Distance(heldObject.transform.position, cameraObject.transform.position);
 
-                if (distanceToCamera < 10)
+                if (distanceToCamera < 1)
                 {
                     EatEnemy();              
                 }

@@ -8051,10 +8051,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6028245048068062561, guid: 97d09646d0a403741aa1a37c8028ee48, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2113040740}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d09646d0a403741aa1a37c8028ee48, type: 3}
 --- !u!1 &1293065684 stripped
 GameObject:
@@ -12060,27 +12057,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!1 &2113040733 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6028245048068062561, guid: 97d09646d0a403741aa1a37c8028ee48, type: 3}
-  m_PrefabInstance: {fileID: 1281306423}
-  m_PrefabAsset: {fileID: 0}
---- !u!208 &2113040740
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113040733}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 1, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!4 &2114349217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8358272035730339446, guid: 9a30bb568b3e44148b6797bb4c2638e6, type: 3}

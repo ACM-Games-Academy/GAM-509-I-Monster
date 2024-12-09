@@ -60,7 +60,7 @@ public class WaveManager : MonoBehaviour
                     SpawnEnemy(tankFactory, false);
                 }
 
-                // Spawn a helicopter if within the helicopter count
+                // Spawn a helicopter if within the helicopter countw
                 if (i < currentWave.helicopterCount)
                 {
                     SpawnEnemy(helicopterFactory, true);
@@ -74,6 +74,8 @@ public class WaveManager : MonoBehaviour
 
             Debug.Log($"Wave {currentWaveIndex + 1} completed!");
             currentWaveIndex++;
+
+            yield return new WaitForSeconds(20);
         }
 
 
