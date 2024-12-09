@@ -198,6 +198,4 @@ public class HelicopterEnemy : Enemy
     {
         StopAllCoroutines();
     }
-
-   
 }
